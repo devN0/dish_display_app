@@ -1,21 +1,24 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Card, CardImg, CardImgOverlay, CardTitle} from 'reactstrap';
 
-class Menu extends Component {
-  constructor(props){
-    super(props);
-  }
+// if we know what are all the attributes of the props object being passed we can directly metion them as well.
+function RenderMenuItem({dish, onClickEvent}) {
+  return (
+    <Card onClick={()=>onClickEvent(dish.id)}>
+      <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
+      <CardImgOverlay>
+        <CardTitle>{dish.name}</CardTitle>
+      </CardImgOverlay>
+    </Card>
+  );
+}
 
-  render(){
-    const menu = this.props.dishes.map((dish) => {
+// Another way of defining functional component is via an arrow function
+const Menu = (props) => {
+    const menu = props.dishes.map((dish) => {
       return(
         <div key={dish.id} className="col-12 col-md-5 m-1">
-          <Card onClick={()=>this.props.onClickEvent(dish.id)}>
-            <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
-            <CardImgOverlay>
-              <CardTitle>{dish.name}</CardTitle>
-            </CardImgOverlay>
-          </Card>
+          <RenderMenuItem dish={dish} onClickEvent={props.onClickEvent}/>
         </div>
       );
     });
@@ -25,7 +28,6 @@ class Menu extends Component {
         {menu}
       </div>
     );
-  }
 }
 
 export default Menu;

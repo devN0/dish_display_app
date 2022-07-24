@@ -26,8 +26,10 @@ class Main extends Component {
             <NavbarBrand href='/'>New Application</NavbarBrand>
           </div>
         </Navbar>
-        <Menu dishes={this.state.dishes} onClickEvent={(dishId)=>{this.onSelectDish(dishId)}}/>
-        <DishDetail selectedDish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDishId)[0] }/>
+        <div className="container">
+          <Menu dishes={this.state.dishes} onClickEvent={(dishId)=>{this.onSelectDish(dishId)}}/>
+          <DishDetail selectedDish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDishId)[0] }/>
+        </div>
       </div>
     )
   }
