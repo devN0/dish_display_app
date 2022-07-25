@@ -14,7 +14,7 @@ const RenderDishDetails = ({dish}) => {
 }
 
 const DishDetail = (props) => {
-    const dish = props.selectedDish;
+    const dish = props.dish;
     console.log(dish);
     if(dish != null){
       return (
