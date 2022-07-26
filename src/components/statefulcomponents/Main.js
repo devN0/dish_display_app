@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Home from '../statelesscomponents/HomeComponent';
 import Menu from '../statelesscomponents/MenuComponent';
 import DishDetail from '../statelesscomponents/DishDetailComponent';
-import Contact from '../statelesscomponents/ContactComponent';
+import Contact from './ContactComponent';
 import Header from './HeaderComponent';
 
 import {DISHES} from '../../shared/dishes';
@@ -51,7 +51,7 @@ class Main extends Component {
             <Route exact path="/" component={this.Homepage} />
             <Route exact path="/menu" component={()=>{ return <Menu dishes={this.state.dishes}/>}} />
             <Route path="/menu/:dishId" component={this.DishWithId}/>
-            <Route exact path="/contactus" component={Contact} />
+            <Route exact path="/contactus" component={()=> <Contact/>}/>
             {/* here we've passed an inline functional component because we wanted to pass props to the Menu component. Also note that we're not passing the onClickEvent prop to Menu, we'll do it in another way. */}
             <Redirect to="/" />
           </Switch>
